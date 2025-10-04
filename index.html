@@ -1,28 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ArchTiers Leaderboard</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mcTiers - Elite Minecraft PvP Arena</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation Bar -->
+    <div class="matrix-bg"></div>
+    
+    <!-- Navigation -->
     <nav class="navbar">
-        <div class="logo">archtiers.net</div>
-        <div class="nav-icons">
-            <span class="icon">🏆</span>
-            <span class="icon">🍴</span>
-            <span class="icon">🪄</span>
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">mc<span class="highlight">Tiers</span></span>
+                <div class="logo-glow"></div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Arena</a></li>
+                <li><a href="#modes" class="nav-link">Game Modes</a></li>
+                <li><a href="#leaderboard" class="nav-link">Leaderboard</a></li>
+                <li><a href="#tiers" class="nav-link">Tier System</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-        <input type="text" class="search" placeholder="Search player...">
     </nav>
 
-    <!-- Leaderboard -->
-    <main class="leaderboard" id="leaderboard">
-        <!-- JS will populate leaderboard rows -->
-    </main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="glitch" data-text="ELITE PVP ARENA">ELITE PVP ARENA</span>
+                </h1>
+                <p class="hero-subtitle">Ascend through 5 tiers across 7 game modes in the ultimate Minecraft 1.18 PvP experience</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" id="enterArena">ENTER ARENA</button>
+                    <button class="btn btn-secondary" onclick="document.getElementById('playerSearch').focus()">SEARCH PLAYER</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hologram-container">
+                    <div class="hologram-ring"></div>
+                    <div class="hologram-ring"></div>
+                    <div class="hologram-ring"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Player Search -->
+        <div class="player-search-container">
+            <input type="text" id="playerSearch" placeholder="Enter Minecraft username..." class="player-input">
+            <button id="searchBtn" class="search-btn">SCAN</button>
+        </div>
+        
+        <!-- Player Display -->
+        <div id="playerDisplay" class="player-display hidden">
+            <div class="player-card">
+                <div class="player-avatar">
+                    <img id="playerSkin" src="" alt="Player Skin">
+                    <div class="avatar-glow"></div>
+                </div>
+                <div class="player-info">
+                    <h3 id="playerName"></h3>
+                    <div class="player-stats">
+                        <div class="stat">
+                            <span class="stat-label">Current Tier</span>
+                            <span class="stat-value" id="playerTier">Unranked</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Main Mode</span>
+                            <span class="stat-value" id="playerMode">Crystal PvP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script src="script.js"></script>
+    <!-- Game Modes Section -->
+    <section id="modes" class="game-modes">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-text">COMBAT PROTOCOLS</span>
+                <div class="title-line"></div>
+            </h2>
+            <div class="modes-grid">
+                <div class="mode-card" data-mode="crystal">
+                    <div class="mode-icon">⚡</div>
+                    <h3>Crystal PvP</h3>
+                    <p>Master the art of end crystal combat in this explosive game mode</p>
+                    <div class="mode-stats">
+                        <span>Active Players: <span class="highlight">1,247</span></span>
+                    </div>
+                </div>
+                <div class="mode-card" data-mode="sword">
+                    <div class="mode-icon">⚔️</div>
+                    <h3>Sword PvP</h3>
+                    <p>Classic melee combat with modern mechanics and strategies</p>
+                    <div class="mode-stats">
+                        <span>Active Players: <span class="highlight">892</span></span>
+                    </div>
+                </div>
+                <div class="mode-card" data-mode="axe">
+                    <div class="mode-icon">🪓</div>
+                    <h3>Axe PvP</h3>
+                    <p>Heavy hitting combat focused on timing and precision</p>
+                    <div class="mode-stats">
+                        <span>Active Players: <span class="highlight">634</span></span>
+                    </div>
+                </div>
+                <div class="mode-card" data-mode="bow">
+                    <div class="mode-icon">🏹</div>
+                    <h3>Bow PvP</h3>
+                    <p>Long-range precision combat testing your archery skills</p>
+                    <div class="mode-stats">
+                        <span>Active Players: <span class="highlight">445</span></span>
+                    </div>
+                </div>
+                <div class="mode-card" data-mode="pot">
+                    <div class="mode-icon">🧪</div>
+                    <h3>Pot PvP</h3>
+                    <p>Fast-paced potion-based combat requiring quick reflexes</p>
+                    <div class="mode-stats">
+                        <span>Active Players: <span class="highlight">723</span></span>
+                    </div>
+                </div>
+                <div class="mode-card" data-mode="uhc">
+                    <div class="mode-icon">💎</div>
+                    <h3>UHC</h3>
+                    <p>Ultra Hardcore mode where every decision matters</p>
+                    <div class="mode-stats">
+                        <span>Active Players: <span class="highlight">356</span></span>
+                    </div>
+                </div>
+                <div class="mode-card" data-mode="combo">
+                    <div class="mode-icon">🔥</div>
+                    <h3>Combo PvP</h3>
+                    <p>Chain attacks and maintain momentum in intense battles</p>
+                    <div class="mode-stats">
+                        <span>Active Players: <span class="highlight">567</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tier System -->
+    <section id="tiers" class="tier-system">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-text">RANKING MATRIX</span>
+                <div class="title-line"></div>
+            </h2>
+            <div class="tiers-container">
+                <div class="tier-card" data-tier="1">
+                    <div class="tier-number">I</div>
+                    <div class="tier-name">INITIATE</div>
+                    <div class="tier-description">Begin your journey</div>
+                </div>
+                <div class="tier-card" data-tier="2">
+                    <div class="tier-number">II</div>
+                    <div class="tier-name">WARRIOR</div>
+                    <div class="tier-description">Prove your skills</div>
+                </div>
+                <div class="tier-card" data-tier="3">
+                    <div class="tier-number">III</div>
+                    <div class="tier-name">VETERAN</div>
+                    <div class="tier-description">Battle-tested fighter</div>
+                </div>
+                <div class="tier-card" data-tier="4">
+                    <div class="tier-number">IV</div>
+                    <div class="tier-name">ELITE</div>
+                    <div class="tier-description">Among the best</div>
+                </div>
+                <div class="tier-card" data-tier="5">
+                    <div class="tier-number">V</div>
+                    <div class="tier-name">LEGEND</div>
+                    <div class="tier-description">Ultimate mastery</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard -->
+    <section id="leaderboard" class="leaderboard">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-text">HALL OF LEGENDS</span>
+                <div class="title-line"></div>
+            </h2>
+            <div class="leaderboard-container">
+                <div class="leaderboard-header">
+                    <div class="rank-header">RANK</div>
+                    <div class="player-header">PLAYER</div>
+                    <div class="tier-header">TIER</div>
+                    <div class="mode-header">MODE</div>
+                    <div class="score-header">SCORE</div>
+                </div>
+                <div id="leaderboardList" class="leaderboard-list">
+                    <!-- Leaderboard entries will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>mcTiers</h3>
+                    <p>The ultimate Minecraft PvP ranking platform</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Game Modes</h4>
+                    <ul>
+                        <li>Crystal PvP</li>
+                        <li>Sword PvP</li>
+                        <li>Axe PvP</li>
+                        <li>Bow PvP</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li>Discord</li>
+                        <li>Reddit</li>
+                        <li>Forums</li>
+                        <li>Support</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 mcTiers. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
