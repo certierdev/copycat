@@ -3,33 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCTiers Clone</title>
+    <title>archtiers.net</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>MCTiers Clone</h1>
-        <p>Placeholder Rankings</p>
-    </header>
+    <div class="container">
+        <header>
+            <div class="logo">archtiers.net</div>
+            <input type="text" class="search" placeholder="Search player..">
+        </header>
 
-    <main>
-        <div class="tier-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Player</th>
-                        <th>Solo</th>
-                        <th>Duos</th>
-                        <th>Squads</th>
-                        <th>Overall</th>
-                    </tr>
-                </thead>
-                <tbody id="players-table">
-                    <!-- Players will be populated here by JS -->
-                </tbody>
-            </table>
+        <div class="icons-row">
+            <div class="icon">🏆</div>
+            <div class="icon">🔱</div>
+            <div class="icon">🏹</div>
         </div>
-    </main>
+
+        <div class="leaderboard" id="leaderboard"></div>
+    </div>
 
     <script src="script.js"></script>
 </body>
