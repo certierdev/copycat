@@ -3,25 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mcTiers - Elite Minecraft PvP Arena</title>
+    <title>PvPTiers - Elite Minecraft PvP Ranking Platform</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="matrix-bg"></div>
+    <div class="cyber-grid"></div>
     
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <span class="logo-text">mc<span class="highlight">Tiers</span></span>
-                <div class="logo-glow"></div>
+                <span class="logo-text">PvP<span class="highlight">Tiers</span></span>
+                <div class="logo-pulse"></div>
             </div>
             <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Arena</a></li>
-                <li><a href="#modes" class="nav-link">Game Modes</a></li>
-                <li><a href="#leaderboard" class="nav-link">Leaderboard</a></li>
-                <li><a href="#tiers" class="nav-link">Tier System</a></li>
+                <li><a href="#home" class="nav-link active">HOME</a></li>
+                <li><a href="#tierlist" class="nav-link">TIER LIST</a></li>
+                <li><a href="#community" class="nav-link">COMMUNITY</a></li>
+                <li><a href="#resources" class="nav-link">RESOURCES</a></li>
+                <li><a href="#server" class="nav-link">SERVER</a></li>
+                <li><a href="#affiliates" class="nav-link">AFFILIATES</a></li>
+                <li><a href="#support" class="nav-link">SUPPORT</a></li>
+                <li><a href="#store" class="nav-link">STORE</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -31,214 +36,706 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">
-                    <span class="glitch" data-text="ELITE PVP ARENA">ELITE PVP ARENA</span>
+    <!-- HOME Section -->
+    <section id="home" class="home-section">
+        <div class="container">
+            <!-- Hero Header -->
+            <div class="hero-header">
+                <h1 class="main-title">
+                    <span class="glitch" data-text="PVPTIERS">PVPTIERS</span>
                 </h1>
-                <p class="hero-subtitle">Ascend through 5 tiers across 7 game modes in the ultimate Minecraft 1.18 PvP experience</p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary" id="enterArena">ENTER ARENA</button>
-                    <button class="btn btn-secondary" onclick="document.getElementById('playerSearch').focus()">SEARCH PLAYER</button>
+                <p class="subtitle">Elite Minecraft PvP Ranking Platform</p>
+                <div class="stats-bar">
+                    <div class="stat-item">
+                        <span class="stat-number">205,592</span>
+                        <span class="stat-label">Discord Members</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">15,847</span>
+                        <span class="stat-label">Ranked Players</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">247</span>
+                        <span class="stat-label">Online Now</span>
+                    </div>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="hologram-container">
-                    <div class="hologram-ring"></div>
-                    <div class="hologram-ring"></div>
-                    <div class="hologram-ring"></div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Player Search -->
-        <div class="player-search-container">
-            <input type="text" id="playerSearch" placeholder="Enter Minecraft username..." class="player-input">
-            <button id="searchBtn" class="search-btn">SCAN</button>
-        </div>
-        
-        <!-- Player Display -->
-        <div id="playerDisplay" class="player-display hidden">
-            <div class="player-card">
-                <div class="player-avatar">
-                    <img id="playerSkin" src="" alt="Player Skin">
-                    <div class="avatar-glow"></div>
-                </div>
-                <div class="player-info">
-                    <h3 id="playerName"></h3>
-                    <div class="player-stats">
-                        <div class="stat">
-                            <span class="stat-label">Current Tier</span>
-                            <span class="stat-value" id="playerTier">Unranked</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-label">Main Mode</span>
-                            <span class="stat-value" id="playerMode">Crystal PvP</span>
+
+            <!-- Live Feeds Grid -->
+            <div class="feeds-grid">
+                <!-- High Tier Results -->
+                <div class="feed-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-crown"></i> HIGH TIER RESULTS (HT3+)</h3>
+                        <div class="panel-controls">
+                            <button class="refresh-btn"><i class="fas fa-sync-alt"></i></button>
                         </div>
                     </div>
+                    <div class="feed-content" id="highTierFeed">
+                        <!-- High tier results populated by JS -->
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Game Modes Section -->
-    <section id="modes" class="game-modes">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="title-text">COMBAT PROTOCOLS</span>
-                <div class="title-line"></div>
-            </h2>
-            <div class="modes-grid">
-                <div class="mode-card" data-mode="crystal">
-                    <div class="mode-icon">⚡</div>
-                    <h3>Crystal PvP</h3>
-                    <p>Master the art of end crystal combat in this explosive game mode</p>
-                    <div class="mode-stats">
-                        <span>Active Players: <span class="highlight">1,247</span></span>
+                <!-- Live Test Results -->
+                <div class="feed-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-bolt"></i> LIVE TEST RESULTS</h3>
+                        <div class="live-indicator">
+                            <span class="pulse-dot"></span>
+                            LIVE
+                        </div>
+                    </div>
+                    <div class="feed-content" id="liveFeed">
+                        <!-- Live results populated by JS -->
                     </div>
                 </div>
-                <div class="mode-card" data-mode="sword">
-                    <div class="mode-icon">⚔️</div>
-                    <h3>Sword PvP</h3>
-                    <p>Classic melee combat with modern mechanics and strategies</p>
-                    <div class="mode-stats">
-                        <span>Active Players: <span class="highlight">892</span></span>
+
+                <!-- Tester of the Month -->
+                <div class="feed-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-trophy"></i> TESTER OF THE MONTH</h3>
+                    </div>
+                    <div class="feed-content" id="testerFeed">
+                        <!-- Tester highlights populated by JS -->
                     </div>
                 </div>
-                <div class="mode-card" data-mode="axe">
-                    <div class="mode-icon">🪓</div>
-                    <h3>Axe PvP</h3>
-                    <p>Heavy hitting combat focused on timing and precision</p>
-                    <div class="mode-stats">
-                        <span>Active Players: <span class="highlight">634</span></span>
+
+                <!-- Community Events -->
+                <div class="feed-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-calendar"></i> COMMUNITY EVENTS</h3>
+                    </div>
+                    <div class="feed-content" id="eventsFeed">
+                        <!-- Events populated by JS -->
                     </div>
                 </div>
-                <div class="mode-card" data-mode="bow">
-                    <div class="mode-icon">🏹</div>
-                    <h3>Bow PvP</h3>
-                    <p>Long-range precision combat testing your archery skills</p>
-                    <div class="mode-stats">
-                        <span>Active Players: <span class="highlight">445</span></span>
+
+                <!-- News & Updates -->
+                <div class="feed-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-newspaper"></i> NEWS & UPDATES</h3>
+                    </div>
+                    <div class="feed-content" id="newsFeed">
+                        <!-- News populated by JS -->
                     </div>
                 </div>
-                <div class="mode-card" data-mode="pot">
-                    <div class="mode-icon">🧪</div>
-                    <h3>Pot PvP</h3>
-                    <p>Fast-paced potion-based combat requiring quick reflexes</p>
-                    <div class="mode-stats">
-                        <span>Active Players: <span class="highlight">723</span></span>
+
+                <!-- Ranking Announcements -->
+                <div class="feed-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-megaphone"></i> RANKING ANNOUNCEMENTS</h3>
                     </div>
-                </div>
-                <div class="mode-card" data-mode="uhc">
-                    <div class="mode-icon">💎</div>
-                    <h3>UHC</h3>
-                    <p>Ultra Hardcore mode where every decision matters</p>
-                    <div class="mode-stats">
-                        <span>Active Players: <span class="highlight">356</span></span>
-                    </div>
-                </div>
-                <div class="mode-card" data-mode="combo">
-                    <div class="mode-icon">🔥</div>
-                    <h3>Combo PvP</h3>
-                    <p>Chain attacks and maintain momentum in intense battles</p>
-                    <div class="mode-stats">
-                        <span>Active Players: <span class="highlight">567</span></span>
+                    <div class="feed-content" id="announcementsFeed">
+                        <!-- Announcements populated by JS -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Tier System -->
-    <section id="tiers" class="tier-system">
+    <!-- TIER LIST Section -->
+    <section id="tierlist" class="tierlist-section">
         <div class="container">
-            <h2 class="section-title">
-                <span class="title-text">RANKING MATRIX</span>
-                <div class="title-line"></div>
-            </h2>
-            <div class="tiers-container">
-                <div class="tier-card" data-tier="1">
-                    <div class="tier-number">I</div>
-                    <div class="tier-name">INITIATE</div>
-                    <div class="tier-description">Begin your journey</div>
-                </div>
-                <div class="tier-card" data-tier="2">
-                    <div class="tier-number">II</div>
-                    <div class="tier-name">WARRIOR</div>
-                    <div class="tier-description">Prove your skills</div>
-                </div>
-                <div class="tier-card" data-tier="3">
-                    <div class="tier-number">III</div>
-                    <div class="tier-name">VETERAN</div>
-                    <div class="tier-description">Battle-tested fighter</div>
-                </div>
-                <div class="tier-card" data-tier="4">
-                    <div class="tier-number">IV</div>
-                    <div class="tier-name">ELITE</div>
-                    <div class="tier-description">Among the best</div>
-                </div>
-                <div class="tier-card" data-tier="5">
-                    <div class="tier-number">V</div>
-                    <div class="tier-name">LEGEND</div>
-                    <div class="tier-description">Ultimate mastery</div>
+            <div class="section-header">
+                <h2 class="section-title">TIER LIST</h2>
+                <div class="player-search">
+                    <input type="text" id="playerSearch" placeholder="Search player..." class="search-input">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Leaderboard -->
-    <section id="leaderboard" class="leaderboard">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="title-text">HALL OF LEGENDS</span>
-                <div class="title-line"></div>
-            </h2>
+            <!-- Mode Tabs -->
+            <div class="mode-tabs">
+                <button class="mode-tab active" data-mode="sword">
+                    <i class="fas fa-sword"></i>
+                    <span>SWORD</span>
+                </button>
+                <button class="mode-tab" data-mode="axe">
+                    <i class="fas fa-axe"></i>
+                    <span>AXE</span>
+                </button>
+                <button class="mode-tab" data-mode="pot">
+                    <i class="fas fa-flask"></i>
+                    <span>POT</span>
+                </button>
+                <button class="mode-tab" data-mode="crystal">
+                    <i class="fas fa-gem"></i>
+                    <span>CRYSTAL</span>
+                </button>
+                <button class="mode-tab" data-mode="smp">
+                    <i class="fas fa-globe"></i>
+                    <span>SMP</span>
+                </button>
+                <button class="mode-tab" data-mode="uhc">
+                    <i class="fas fa-heart"></i>
+                    <span>UHC</span>
+                </button>
+                <button class="mode-tab new-mode" data-mode="mace">
+                    <i class="fas fa-hammer"></i>
+                    <span>MACE</span>
+                    <div class="new-badge">NEW</div>
+                </button>
+                <button class="mode-tab" data-mode="overall">
+                    <i class="fas fa-crown"></i>
+                    <span>OVERALL</span>
+                </button>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters-container">
+                <div class="filter-group">
+                    <label>Region:</label>
+                    <select id="regionFilter" class="filter-select">
+                        <option value="all">All Regions</option>
+                        <option value="na">NA</option>
+                        <option value="eu">EU</option>
+                        <option value="as">AS</option>
+                        <option value="sa">SA</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Tier:</label>
+                    <select id="tierFilter" class="filter-select">
+                        <option value="all">All Tiers</option>
+                        <option value="ht">High Tier (HT3+)</option>
+                        <option value="lt">Low Tier (LT1-5)</option>
+                        <option value="ht1">HT1 Only</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Status:</label>
+                    <select id="statusFilter" class="filter-select">
+                        <option value="all">All Players</option>
+                        <option value="active">Active</option>
+                        <option value="retired">Retired</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Leaderboard -->
             <div class="leaderboard-container">
                 <div class="leaderboard-header">
-                    <div class="rank-header">RANK</div>
-                    <div class="player-header">PLAYER</div>
-                    <div class="tier-header">TIER</div>
-                    <div class="mode-header">MODE</div>
-                    <div class="score-header">SCORE</div>
+                    <div class="col-rank">RANK</div>
+                    <div class="col-player">PLAYER</div>
+                    <div class="col-tier">TIER</div>
+                    <div class="col-region">REGION</div>
+                    <div class="col-status">STATUS</div>
+                    <div class="col-points">POINTS</div>
                 </div>
-                <div id="leaderboardList" class="leaderboard-list">
-                    <!-- Leaderboard entries will be populated by JavaScript -->
+                <div id="leaderboard" class="leaderboard-list">
+                    <!-- Populated by JS -->
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- COMMUNITY Section -->
+    <section id="community" class="community-section">
+        <div class="container">
+            <h2 class="section-title">COMMUNITY</h2>
+            
+            <div class="community-grid">
+                <!-- Discord Widget -->
+                <div class="community-card discord-widget">
+                    <div class="discord-header">
+                        <i class="fab fa-discord"></i>
+                        <h3>Discord Server</h3>
+                        <div class="member-count">205,592 Members</div>
+                    </div>
+                    <div class="discord-status">
+                        <div class="online-count">
+                            <span class="status-dot online"></span>
+                            12,847 Online
+                        </div>
+                    </div>
+                    <button class="btn btn-discord">JOIN DISCORD</button>
+                </div>
+
+                <!-- Training Hub -->
+                <div class="community-card">
+                    <div class="card-icon"><i class="fas fa-dumbbell"></i></div>
+                    <h3>Training Hub</h3>
+                    <p>Connect with elite trainers and improve your skills</p>
+                    <button class="btn btn-secondary">FIND TRAINER</button>
+                </div>
+
+                <!-- Forums -->
+                <div class="community-card">
+                    <div class="card-icon"><i class="fas fa-comments"></i></div>
+                    <h3>Forums</h3>
+                    <p>Join community discussions and share strategies</p>
+                    <button class="btn btn-secondary">BROWSE FORUMS</button>
+                </div>
+
+                <!-- Live Chat -->
+                <div class="community-card">
+                    <div class="card-icon"><i class="fas fa-comment-dots"></i></div>
+                    <h3>Live Chat</h3>
+                    <p>Real-time community chat and support</p>
+                    <button class="btn btn-secondary">ENTER CHAT</button>
+                </div>
+            </div>
+
+            <!-- Active Testers -->
+            <div class="testers-section">
+                <h3 class="subsection-title">
+                    <i class="fas fa-user-check"></i>
+                    ACTIVE TESTERS
+                    <span class="online-indicator">
+                        <span class="pulse-dot"></span>
+                        23 Online
+                    </span>
+                </h3>
+                <div id="activeTesters" class="testers-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Event Schedule -->
+            <div class="events-section">
+                <h3 class="subsection-title">
+                    <i class="fas fa-calendar-alt"></i>
+                    EVENT SCHEDULE
+                </h3>
+                <div id="eventSchedule" class="events-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESOURCES Section -->
+    <section id="resources" class="resources-section">
+        <div class="container">
+            <h2 class="section-title">RESOURCES</h2>
+            
+            <div class="resources-grid">
+                <!-- PvP Guides -->
+                <div class="resource-card guides-card">
+                    <div class="card-header">
+                        <i class="fas fa-book"></i>
+                        <h3>PvP Guides</h3>
+                    </div>
+                    <div class="guides-list">
+                        <a href="#" class="guide-link">
+                            <i class="fas fa-sword"></i>
+                            <span>Sword PvP Mastery</span>
+                            <small>by CombatMaster</small>
+                        </a>
+                        <a href="#" class="guide-link">
+                            <i class="fas fa-gem"></i>
+                            <span>Crystal PvP Guide</span>
+                            <small>by CrystalKing</small>
+                        </a>
+                        <a href="#" class="guide-link">
+                            <i class="fas fa-axe"></i>
+                            <span>Axe PvP Techniques</span>
+                            <small>by AxeWarrior</small>
+                        </a>
+                        <a href="#" class="guide-link">
+                            <i class="fas fa-flask"></i>
+                            <span>Pot PvP Strategies</span>
+                            <small>by PotionMage</small>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tiers Mod -->
+                <div class="resource-card mod-card">
+                    <div class="card-header">
+                        <i class="fas fa-download"></i>
+                        <h3>Tiers Mod</h3>
+                    </div>
+                    <p>Live tierlists in Minecraft - supports PvPTiers and other networks</p>
+                    <div class="download-buttons">
+                        <button class="btn btn-primary">
+                            <i class="fab fa-github"></i>
+                            MODRINTH
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-download"></i>
+                            DIRECT DOWNLOAD
+                        </button>
+                    </div>
+                    <div class="mod-stats">
+                        <span>v2.1.4 • 45K Downloads</span>
+                    </div>
+                </div>
+
+                <!-- Whitepaper -->
+                <div class="resource-card">
+                    <div class="card-header">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>Whitepaper</h3>
+                    </div>
+                    <p>Technical documentation on tier logic, test procedures, and ranking algorithms</p>
+                    <button class="btn btn-secondary">READ WHITEPAPER</button>
+                </div>
+
+                <!-- Get Tested Guide -->
+                <div class="resource-card">
+                    <div class="card-header">
+                        <i class="fas fa-clipboard-check"></i>
+                        <h3>Get Tested Guide</h3>
+                    </div>
+                    <p>Step-by-step guide to start your ranking journey</p>
+                    <button class="btn btn-secondary">VIEW GUIDE</button>
+                </div>
+            </div>
+
+            <!-- Trainer Hub -->
+            <div class="trainer-hub">
+                <h3 class="subsection-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    TRAINER HUB
+                </h3>
+                <div class="trainers-grid" id="trainersGrid">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVER Section -->
+    <section id="server" class="server-section">
+        <div class="container">
+            <h2 class="section-title">SERVER</h2>
+            
+            <!-- Server Info -->
+            <div class="server-info">
+                <div class="server-main">
+                    <div class="server-header">
+                        <h3>Official PvPTiers Server</h3>
+                        <div class="server-status online">
+                            <span class="status-dot"></span>
+                            ONLINE
+                        </div>
+                    </div>
+                    <div class="server-ip">
+                        <span class="ip-text">pvptiers.com</span>
+                        <button class="copy-btn" onclick="copyIP()">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <div class="server-stats">
+                        <div class="stat">
+                            <span class="stat-label">Players Online</span>
+                            <span class="stat-value" id="serverPlayers">247</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Status</span>
+                            <span class="stat-value">Whitelisted</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Version</span>
+                            <span class="stat-value">1.20.4</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Server Features -->
+                <div class="server-features">
+                    <h4>Server Features</h4>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <i class="fas fa-robot"></i>
+                            <span>Automated UHC Events</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-swords"></i>
+                            <span>Advanced Duel API</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-cloud"></i>
+                            <span>Planned Skywars/Bedwars</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Live Tier Display Plugin</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-map"></i>
+                            <span>Custom PvP Maps</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-fist-raised"></i>
+                            <span>Free-For-All Arenas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Changelog -->
+            <div class="changelog-section">
+                <h3 class="subsection-title">
+                    <i class="fas fa-history"></i>
+                    RECENT UPDATES
+                </h3>
+                <div id="changelog" class="changelog-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AFFILIATES Section -->
+    <section id="affiliates" class="affiliates-section">
+        <div class="container">
+            <h2 class="section-title">AFFILIATES</h2>
+            
+            <div class="affiliates-grid">
+                <!-- YouTube Creators -->
+                <div class="affiliate-category">
+                    <h3><i class="fab fa-youtube"></i> YouTube Creators</h3>
+                    <div class="creators-grid" id="youtubeCreators">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- TikTok Creators -->
+                <div class="affiliate-category">
+                    <h3><i class="fab fa-tiktok"></i> TikTok Creators</h3>
+                    <div class="creators-grid" id="tiktokCreators">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- PvP Trainers -->
+                <div class="affiliate-category">
+                    <h3><i class="fas fa-graduation-cap"></i> Elite Trainers</h3>
+                    <div class="creators-grid" id="eliteTrainers">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUPPORT Section -->
+    <section id="support" class="support-section">
+        <div class="container">
+            <h2 class="section-title">SUPPORT</h2>
+            
+            <div class="support-content">
+                <!-- Main Support -->
+                <div class="support-main">
+                    <div class="support-card primary">
+                        <div class="card-icon">
+                            <i class="fab fa-discord"></i>
+                        </div>
+                        <h3>Need Help?</h3>
+                        <p>Get assistance with tier tests, bugs, appeals, and more through our Discord support system</p>
+                        <button class="btn btn-discord">JOIN SUPPORT DISCORD</button>
+                    </div>
+                </div>
+
+                <!-- FAQ -->
+                <div class="faq-section">
+                    <h3>Frequently Asked Questions</h3>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>How do I get tested?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Join our Discord server and request a test in the appropriate channel for your region and gamemode. Make sure to read the testing requirements first.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>What are the tier requirements?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Each tier has specific skill requirements that vary by gamemode. Check our whitepaper for detailed criteria and testing procedures.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Can I appeal my tier result?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Yes, appeals can be submitted through our Discord support system within 48 hours of your test. Provide evidence and reasoning for your appeal.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>How does the points system work?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Points are earned through testing, tournaments, and achievements. Combat Grandmaster requires 400+ points, Combat Master requires 300+ points.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORE Section -->
+    <section id="store" class="store-section">
+        <div class="container">
+            <h2 class="section-title">STORE</h2>
+            
+            <div class="store-notice">
+                <i class="fas fa-shield-alt"></i>
+                <span>NO PAY-TO-WIN • Cosmetics and perks only</span>
+            </div>
+            
+            <div class="store-categories">
+                <div class="category-tabs">
+                    <button class="category-tab active" data-category="cosmetics">
+                        <i class="fas fa-palette"></i>
+                        COSMETICS
+                    </button>
+                    <button class="category-tab" data-category="discord">
+                        <i class="fab fa-discord"></i>
+                        DISCORD PERKS
+                    </button>
+                    <button class="category-tab" data-category="server">
+                        <i class="fas fa-server"></i>
+                        SERVER PERKS
+                    </button>
+                </div>
+
+                <div class="store-grid" id="storeGrid">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Store Footer -->
+            <div class="store-footer">
+                <div class="footer-links">
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Refund Policy</a>
+                    <a href="#">Payment Info</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Player Profile Modal -->
+    <div id="playerModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <img id="modalPlayerSkin" src="" alt="Player Skin">
+                    <div>
+                        <h3 id="modalPlayerName">Player Profile</h3>
+                        <div class="modal-badges" id="modalBadges">
+                            <!-- Badges populated by JS -->
+                        </div>
+                    </div>
+                </div>
+                <button class="modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="player-stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-label">Region</span>
+                        <span class="stat-value" id="modalRegion">NA</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Current Tier</span>
+                        <span class="stat-value" id="modalTier">HT3</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Peak Tier</span>
+                        <span class="stat-value" id="modalPeakTier">HT1</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Points</span>
+                        <span class="stat-value" id="modalPoints">347</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Status</span>
+                        <span class="stat-value" id="modalStatus">Active</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Discord</span>
+                        <span class="stat-value" id="modalDiscord">Player#1234</span>
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h4>Recent Test Results</h4>
+                    <div id="modalHistory" class="test-history">
+                        <!-- Test history populated by JS -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary">CONTACT PLAYER</button>
+                <button class="btn btn-primary">VIEW FULL PROFILE</button>
+                <button class="btn btn-warning">REPORT/APPEAL</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>mcTiers</h3>
+                    <h3>PvPTiers</h3>
                     <p>The ultimate Minecraft PvP ranking platform</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="#" class="social-link youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-link tiktok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="#" class="social-link twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
                 </div>
                 <div class="footer-section">
                     <h4>Game Modes</h4>
                     <ul>
-                        <li>Crystal PvP</li>
                         <li>Sword PvP</li>
+                        <li>Crystal PvP</li>
                         <li>Axe PvP</li>
-                        <li>Bow PvP</li>
+                        <li>Pot PvP</li>
+                        <li>UHC</li>
+                        <li>SMP</li>
+                        <li>Mace PvP</li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Community</h4>
+                    <h4>Resources</h4>
                     <ul>
-                        <li>Discord</li>
-                        <li>Reddit</li>
-                        <li>Forums</li>
-                        <li>Support</li>
+                        <li><a href="#">PvP Guides</a></li>
+                        <li><a href="#">Tiers Mod</a></li>
+                        <li><a href="#">Whitepaper</a></li>
+                        <li><a href="#">Get Tested</a></li>
+                        <li><a href="#">Training Hub</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Support</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2024 mcTiers. All rights reserved.</p>
+                <p>© 2024 PvPTiers. All rights reserved. | Server IP: pvptiers.com</p>
             </div>
         </div>
     </footer>
