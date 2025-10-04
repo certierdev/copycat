@@ -37,4 +37,3 @@ function createCard(player){
 // Append to container
 const container = document.getElementById("leaderboard-cards");
 players.forEach(p=>container.appendChild(createCard(p)));
-
