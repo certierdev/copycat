@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: #1e1e1e;
+    border-bottom: 2px solid #333;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #ffcc00;
+}
+
+header p {
+    margin: 0.5rem 0 0;
+    color: #aaa;
+}
+
+main {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.tier-table table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+}
+
+.tier-table th, .tier-table td {
+    padding: 0.75rem 1rem;
+    border: 1px solid #333;
+    text-align: center;
+}
+
+.tier-table th {
+    background-color: #222;
+}
+
+.tier-table td.player-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tier-table td.player-name img {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    border: 1px solid #555;
+}
+
+.tier-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.ht1 { background-color: #ff4444; color: white; }
+.ht2 { background-color: #ff8844; color: white; }
+.ht3 { background-color: #ffaa00; color: white; }
