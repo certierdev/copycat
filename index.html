@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PvPTiers Leaderboard</title>
+<title>MCTiers Clone</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="logo">SP</div>
         <ul class="nav-items">
@@ -23,29 +23,24 @@
         <div class="server-ip">pvptiers.com</div>
     </nav>
 
-    <!-- Leaderboard Page -->
-    <main class="leaderboard-page">
-        <h1>Rankings</h1>
-        <!-- Category Tabs -->
-        <div class="category-tabs">
-            <div class="tab active">OVERALL 🏆</div>
-            <div class="tab">CRYSTAL 💎</div>
-            <div class="tab">SWORD 🗡️</div>
-            <div class="tab">UHC ❤️</div>
-            <div class="tab">POT 🧪</div>
-            <div class="tab">NETHERITE POT 🧪</div>
-            <div class="tab">SMP ⛏️</div>
-            <div class="tab">AXE 🪓</div>
-            <div class="tab">MACE ⚔️</div>
-        </div>
+    <!-- Leaderboard Tabs -->
+    <div class="category-tabs">
+        <div class="tab active">OVERALL 🏆</div>
+        <div class="tab">CRYSTAL 💎</div>
+        <div class="tab">SWORD 🗡️</div>
+        <div class="tab">UHC ❤️</div>
+        <div class="tab">POT 🧪</div>
+        <div class="tab">NETHERITE POT 🧪</div>
+        <div class="tab">SMP ⛏️</div>
+        <div class="tab">AXE 🪓</div>
+        <div class="tab">MACE ⚔️</div>
+    </div>
 
-        <!-- Leaderboard Cards -->
-        <div class="cards-container" id="leaderboard-cards">
-            <!-- JS will populate cards here -->
-        </div>
+    <!-- Leaderboard Cards -->
+    <main class="cards-container" id="leaderboard-cards">
+        <!-- Cards populated by JS -->
     </main>
-    
+
     <script src="script.js"></script>
 </body>
 </html>
-
