@@ -1,27 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>archtiers.net</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PvPTiers Leaderboard</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">archtiers.net</div>
-            <input type="text" class="search" placeholder="Search player..">
-        </header>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">SP</div>
+        <ul class="nav-items">
+            <li>HOME</li>
+            <li class="active">TIER LIST</li>
+            <li>COMMUNITY</li>
+            <li>RESOURCES</li>
+            <li>SERVER</li>
+            <li>AFFILIATES</li>
+            <li>SUPPORT</li>
+            <li>STORE</li>
+        </ul>
+        <div class="server-ip">pvptiers.com</div>
+    </nav>
 
-        <div class="icons-row">
-            <div class="icon">🏆</div>
-            <div class="icon">🔱</div>
-            <div class="icon">🏹</div>
+    <!-- Leaderboard Page -->
+    <main class="leaderboard-page">
+        <h1>Rankings</h1>
+        <!-- Category Tabs -->
+        <div class="category-tabs">
+            <div class="tab active">OVERALL 🏆</div>
+            <div class="tab">CRYSTAL 💎</div>
+            <div class="tab">SWORD 🗡️</div>
+            <div class="tab">UHC ❤️</div>
+            <div class="tab">POT 🧪</div>
+            <div class="tab">NETHERITE POT 🧪</div>
+            <div class="tab">SMP ⛏️</div>
+            <div class="tab">AXE 🪓</div>
+            <div class="tab">MACE ⚔️</div>
         </div>
 
-        <div class="leaderboard" id="leaderboard"></div>
-    </div>
-
+        <!-- Leaderboard Cards -->
+        <div class="cards-container" id="leaderboard-cards">
+            <!-- JS will populate cards here -->
+        </div>
+    </main>
+    
     <script src="script.js"></script>
 </body>
 </html>
+
