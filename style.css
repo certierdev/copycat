@@ -1,70 +1,219 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: #f0f0f0;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>archtiers.net</title>
+    <style>
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 header {
-    text-align: center;
-    padding: 2rem 1rem;
-    background: #1e1e1e;
-    border-bottom: 2px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2rem;
-    color: #ffcc00;
+.logo {
+    font-size: 20px;
+    color: #888;
+    font-weight: 500;
 }
 
-header p {
-    margin: 0.5rem 0 0;
+.search {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 14px;
+    width: 250px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.search::placeholder {
+    color: #666;
+}
+
+.search:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.icons-row {
+    display: flex;
+    justify-content: center;
+    gap: 250px;
+    margin-bottom: 50px;
+}
+
+.icon {
+    font-size: 48px;
+    opacity: 0.8;
+}
+
+.leaderboard {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.player-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 30px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s;
+}
+
+.player-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.player-left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.rank {
+    font-size: 48px;
+    font-weight: 700;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.9);
+    min-width: 60px;
+}
+
+.player-avatar {
+    width: 64px;
+    height: 64px;
+    image-rendering: pixelated;
+}
+
+.player-info h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.player-rank {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
     color: #aaa;
 }
 
-main {
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
+.rank-icon {
+    width: 16px;
+    height: 16px;
 }
 
-.tier-table table {
-    border-collapse: collapse;
-    width: 100%;
-    max-width: 800px;
+.ace {
+    color: #ff6b6b;
 }
 
-.tier-table th, .tier-table td {
-    padding: 0.75rem 1rem;
-    border: 1px solid #333;
-    text-align: center;
+.specialist {
+    color: #a78bfa;
 }
 
-.tier-table th {
-    background-color: #222;
+.cadet {
+    color: #60a5fa;
 }
 
-.tier-table td.player-name {
+.player-right {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 30px;
 }
 
-.tier-table td.player-name img {
-    width: 32px;
-    height: 32px;
-    border-radius: 4px;
-    border: 1px solid #555;
+.region-badge {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 600;
 }
 
-.tier-badge {
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-weight: bold;
+.badges {
+    display: flex;
+    gap: 15px;
 }
 
-.ht1 { background-color: #ff4444; color: white; }
-.ht2 { background-color: #ff8844; color: white; }
-.ht3 { background-color: #ffaa00; color: white; }
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.badge-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.badge-icon.lightning {
+    background: rgba(234, 179, 8, 0.2);
+    border: 2px solid #eab308;
+}
+
+.badge-icon.portal {
+    background: rgba(168, 85, 247, 0.2);
+    border: 2px solid #a855f7;
+}
+
+.badge-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #888;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">archtiers.net</div>
+            <input type="text" class="search" placeholder="Search player..">
+        </header>
+
+        <div class="icons-row">
+            <div class="icon">🏆</div>
+            <div class="icon">🔱</div>
+            <div class="icon">🏹</div>
+        </div>
+
+        <div class="leaderboard" id="leaderboard"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
