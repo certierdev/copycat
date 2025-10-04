@@ -1,39 +1,29 @@
-// Generate placeholder players Testing1-Testing20
-const players = [];
-for (let i = 1; i <= 20; i++) {
-    players.push({
-        name: `Testing${i}`,
-        rank: i,
-        combat: "COMBAT MASTER",
-        region: i % 2 === 0 ? "NA" : "EU",
-        points: Math.floor(Math.random() * 100000),
-        tiers: ["HT1", "HT1", "HT1"],
-        achievements: ["S","C","U"],
-    });
-}
+const players = [
+    {name:"Testing1", title:"Arch Ace", score:1200, region:"EU", tiers:["HT1","LT1"]},
+    {name:"Testing2", title:"Arch Specialist", score:1150, region:"EU", tiers:["HT2","LT2"]},
+    {name:"Testing3", title:"Arch Pro", score:1100, region:"EU", tiers:["HT1","LT1"]},
+    {name:"Testing4", title:"Arch Novice", score:1000, region:"EU", tiers:["HT3","LT2"]},
+    {name:"Testing5", title:"Arch Veteran", score:950, region:"EU", tiers:["HT2","LT1"]},
+    {name:"Testing6", title:"Arch Master", score:900, region:"EU", tiers:["HT1","LT3"]}
+];
 
-// Generate cards
-function createCard(player){
-    const card = document.createElement("div");
-    card.className="card";
-    let rankClass=""; 
-    if(player.rank===1) rankClass="gold";
-    else if(player.rank===2) rankClass="silver";
-    else if(player.rank===3) rankClass="bronze";
-    card.innerHTML=`
-        <div class="rank-badge ${rankClass}">${player.rank}</div>
+const leaderboard = document.getElementById("leaderboard");
+
+players.forEach((player, index) => {
+    const row = document.createElement("div");
+    row.className = "row";
+    row.innerHTML = `
+        <div class="rank">${index+1}</div>
+        <div class="avatar">🧱</div>
         <div class="player-info">
-            <div class="name">${player.name}</div>
-            <div class="combat-badge">${player.combat}</div>
-            <div class="region-badge region-${player.region}">${player.region}</div>
-            <div class="achievements">${player.achievements.map(a=>`<div class="achievement-icon">${a}</div>`).join('')}</div>
-            <div class="tiers">${player.tiers.map(t=>`<div class="tier ${t}">${t}</div>`).join('')}</div>
+            <div class="player-name">${player.name}</div>
+            <div class="player-title">${player.title}</div>
         </div>
-        <div class="points">${player.points}</div>
+        <div class="score">${player.score}</div>
+        <div class="region">${player.region}</div>
+        <div class="tiers">
+            ${player.tiers.map(t => `<div class="tier">${t}</div>`).join('')}
+        </div>
     `;
-    return card;
-}
-
-// Append to container
-const container = document.getElementById("leaderboard-cards");
-players.forEach(p=>container.appendChild(createCard(p)));
+    leaderboard.appendChild(row);
+});
