@@ -3,44 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MCTiers Clone</title>
+<title>ArchTiers Leaderboard</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="logo">SP</div>
-        <ul class="nav-items">
-            <li>HOME</li>
-            <li class="active">TIER LIST</li>
-            <li>COMMUNITY</li>
-            <li>RESOURCES</li>
-            <li>SERVER</li>
-            <li>AFFILIATES</li>
-            <li>SUPPORT</li>
-            <li>STORE</li>
-        </ul>
-        <div class="server-ip">pvptiers.com</div>
+        <div class="logo">archtiers.net</div>
+        <div class="nav-icons">
+            <span class="icon">🏆</span>
+            <span class="icon">🍴</span>
+            <span class="icon">🪄</span>
+        </div>
+        <input type="text" class="search" placeholder="Search player...">
     </nav>
 
-    <!-- Leaderboard Tabs -->
-    <div class="category-tabs">
-        <div class="tab active">OVERALL 🏆</div>
-        <div class="tab">CRYSTAL 💎</div>
-        <div class="tab">SWORD 🗡️</div>
-        <div class="tab">UHC ❤️</div>
-        <div class="tab">POT 🧪</div>
-        <div class="tab">NETHERITE POT 🧪</div>
-        <div class="tab">SMP ⛏️</div>
-        <div class="tab">AXE 🪓</div>
-        <div class="tab">MACE ⚔️</div>
-    </div>
-
-    <!-- Leaderboard Cards -->
-    <main class="cards-container" id="leaderboard-cards">
-        <!-- Cards populated by JS -->
+    <!-- Leaderboard -->
+    <main class="leaderboard" id="leaderboard">
+        <!-- JS will populate leaderboard rows -->
     </main>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
